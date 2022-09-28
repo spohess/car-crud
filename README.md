@@ -1,6 +1,6 @@
 # Car CRUD
 
-## Baice o projeto e execute o seguinte comando:
+## Baixe o projeto e execute o seguinte comando:
 
 - Baixe as dependências
 ````
