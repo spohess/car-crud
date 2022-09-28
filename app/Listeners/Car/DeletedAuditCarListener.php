@@ -4,15 +4,11 @@ namespace App\Listeners\Car;
 
 use App\Jobs\CarAudit\CreateCarAuditJob;
 use App\Models\Car;
-use Auth;
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Support\Facades\Auth;
 
 class DeletedAuditCarListener
 {
-    public function __construct(private Auth $auth)
-    {
-    }
-
     /**
      * @param Car $car
      *
@@ -25,7 +21,7 @@ class DeletedAuditCarListener
         $carAuditJob = app()->make(CreateCarAuditJob::class, [
             'car' => $car,
             'action' => 'deleted',
-            'userId' => $this->auth->id(),
+            'userId' => Auth::id(),
         ]);
         dispatch($carAuditJob);
     }
